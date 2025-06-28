@@ -8,27 +8,21 @@ export default function HomePageMenuSection({ lang, locale }) {
             style={{
                 background: "#EAEAEA",
                 borderRadius: "24px",
-                padding: "16px 0px",
-                margin: "0 auto",
-                marginTop: 50,
+                padding: "24px 16px",
+                margin: "50px auto 0",
                 maxWidth: 1200,
                 boxShadow: "0 4px 10px rgba(0,0,0,0.05)",
             }}
         >
-            <Row
-                gutter={[24, 24]}
-                justify="center"
-                align="middle"
-                style={{ flexWrap: "wrap" }}
-            >
+            <Row gutter={[24, 24]} justify="center" align="middle">
                 {HomePageMenu({ lang, locale }).map((item) => (
                     <Col
                         key={item.key}
-                        xs={12} // 2 per baris di mobile (6 slot)
-                        sm={8} // 3 per baris di tablet (8 slot)
-                        md={6} // 4 per baris di laptop (6 slot)
-                        lg={3} // 8 per baris di desktop (3 slot) => atau ubah lg={24/7}
-                        xl={3} // 8 per baris juga, bisa lg={24/7} jika 7 item
+                        xs={12} // 2 per baris di layar kecil (6 item jadi 3 baris)
+                        sm={8} // 3 per baris di tablet
+                        md={6} // 4 per baris di laptop
+                        lg={6} // 4 per baris di desktop
+                        xl={3} // 8 per baris di desktop lebar (jika cukup)
                         style={{
                             display: "flex",
                             justifyContent: "center",
@@ -37,7 +31,11 @@ export default function HomePageMenuSection({ lang, locale }) {
                     >
                         <Link
                             href={item.label.props.href}
-                            style={{ width: "100%" }}
+                            style={{
+                                width: "100%",
+                                maxWidth: 160,
+                                textDecoration: "none",
+                            }}
                         >
                             <div
                                 style={{
@@ -46,6 +44,19 @@ export default function HomePageMenuSection({ lang, locale }) {
                                     alignItems: "center",
                                     textAlign: "center",
                                     color: "#222",
+                                    padding: "16px 8px",
+                                    borderRadius: 16,
+                                    height: "100%",
+                                    boxShadow: "0 2px 8px rgba(0,0,0,0.03)",
+                                    transition: "transform 0.2s ease",
+                                }}
+                                onMouseEnter={(e) => {
+                                    e.currentTarget.style.transform =
+                                        "translateY(-4px)";
+                                }}
+                                onMouseLeave={(e) => {
+                                    e.currentTarget.style.transform =
+                                        "translateY(0)";
                                 }}
                             >
                                 <div style={{ fontSize: 36, marginBottom: 12 }}>
@@ -54,7 +65,7 @@ export default function HomePageMenuSection({ lang, locale }) {
                                 <div
                                     style={{
                                         fontWeight: 500,
-                                        fontSize: 18,
+                                        fontSize: 16,
                                         lineHeight: "1.4em",
                                     }}
                                 >

@@ -32,10 +32,8 @@ export default function CustomFooter({ locale }) {
                     <Col xs={24} md={10} className="footer-column">
                         <div style={{ marginBottom: 36 }}>
                             <h3 className="brand-title">
-                                {t.footer.brandTitle}
-                                <span className="brand-subtitle">
-                                    {t.footer.brandSubtitle}
-                                </span>
+                                West of Paradise
+                                <span className="brand-subtitle">of Bali</span>
                             </h3>
                         </div>
                         <Text className="footer-desc">
@@ -67,7 +65,7 @@ export default function CustomFooter({ locale }) {
                     {/* Media Sosial */}
                     <Col xs={24} sm={12} md={5} className="footer-column">
                         <h4 className="footer-section-title">
-                            {t.socialMedia}
+                            {t.footer.socialMedia}
                         </h4>
                         <ul className="footer-social">
                             <li>
@@ -99,9 +97,14 @@ export default function CustomFooter({ locale }) {
                         >
                             {t.footer.call}: (0365) 41210
                         </div>
-                        <div style={{ color: "#fff", fontSize: "1.1rem" }}>
-                            {t.footer.location}: Jl. Suropati No.1, Dauhwaru,
-                            Kec. Negara, Kabupaten Jembrana, Bali 82218
+                        <div
+                            style={{
+                                color: "#fff",
+                                fontSize: "1.1rem",
+                                lineHeight: "1.5",
+                            }}
+                        >
+                            {t.footer.location}: {t.footer.street}
                         </div>
                     </Col>
                 </Row>

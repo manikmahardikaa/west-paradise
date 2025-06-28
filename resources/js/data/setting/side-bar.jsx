@@ -1,4 +1,4 @@
-import { CalendarFilled } from "@ant-design/icons";
+import { CalendarFilled, UserOutlined } from "@ant-design/icons";
 import { Link } from "@inertiajs/inertia-react";
 
 export const SidebarSetting = () => [
@@ -10,6 +10,6 @@ export const SidebarSetting = () => [
     {
         key: "/dashboard/accounts",
         label: <Link href="/dashboard/accounts">Akun</Link>,
-        icon: <CalendarFilled />,
+        icon: <UserOutlined />, 
     },
 ];

@@ -38,10 +38,7 @@ const translations = {
             searchLocation: "Cari Lokasi",
         },
         heroSection: {
-            title: "Tentang",
-            subtitle: "Pariwisata Jembrana",
-            description:
-                "Selamat datang di Jembrana, kabupaten di ujung barat Pulau Bali yang menawarkan keindahan alam dan kekayaan budaya. Lewat video ini, mari kita lihat lebih dekat pesona Jembrana yang alami dan kehidupan masyarakatnya yang penuh kehangatan.",
+            title: "Video Promosi Daya Tarik Wisata Jembrana",
         },
         cardHomePage: {
             moreDestination: "Destinasi Lainnya",
@@ -55,7 +52,7 @@ const translations = {
             noEvent: "Belum ada event",
         },
         aboutSection: {
-            title: "Tentang Kami",
+            title: "Tentang",
             subtitle: "West Paradise of Bali",
             description:
                 "Ketahui tujuan dan peran West Paradise of Bali dalam memperkenalkan pesona Jembrana. Kami hadir sebagai panduan wisata terpercaya untuk menjelajahi Bali Barat.",
@@ -67,37 +64,37 @@ const translations = {
             locationUs: "Lokasi Kami",
             features: [
                 {
-                    icon: "🌅",
+                    icon: "/assets/icon/ikon_destinasi_wisata.png",
                     title: "Destinasi Wisata",
                     desc: "Informasi tempat wisata alam, budaya dan sejarah yang mempesona di Jembrana.",
                 },
                 {
-                    icon: "🏡",
+                    icon: "/assets/icon/ikon_desa_wisata.png",
                     title: "Desa Wisata",
                     desc: "Profil desa-desa wisata unggulan dengan kearifan lokal dan keunikan masyarakat setempat.",
                 },
                 {
-                    icon: "🍽️",
+                    icon: "/assets/icon/ikon_restoran.png",
                     title: "Restoran",
                     desc: "Rekomendasi tempat makan dan kuliner khas Bali Barat yang dapat dinikmati oleh wisatawan.",
                 },
                 {
-                    icon: "💡",
+                    icon: "/assets/icon/ikon_ekraf.png",
                     title: "Ekonomi Kreatif",
                     desc: "Eksplorasi produk lokal kerajinan tangan, seni, dan usaha kreatif yang berkembang di Jembrana.",
                 },
                 {
-                    icon: "🏨",
+                    icon: "/assets/icon/ikon_akomodasi.png",
                     title: "Akomodasi",
                     desc: "Pilihan penginapan mulai dari hotel, villa, hingga homestay sesuai dengan berbagai kebutuhan.",
                 },
                 {
-                    icon: "🚌",
+                    icon: "/assets/icon/ikon_transportasi.png",
                     title: "Transportasi",
                     desc: "Panduan moda transportasi lokal untuk menjangkau berbagai lokasi wisata dengan mudah.",
                 },
                 {
-                    icon: "🏥",
+                    icon: "/assets/icon/ikon_faskes.png",
                     title: "Fasilitas Kesehatan",
                     desc: "Informasi penting tentang klinik, rumah sakit, dan layanan kesehatan yang tersedia di wilayah Jembrana.",
                 },
@@ -108,7 +105,6 @@ const translations = {
             subtitle: "Sekarang!",
             description:
                 "Temukan pesona Bali Barat yang masih alami dan kaya akan budaya.",
-            brandTitle: "Surga Barat Bali",
             brandSubtitle: "of Bali",
             quickLinks: "Tautan Cepat",
             socialMedia: "Media Sosial",
@@ -122,6 +118,7 @@ const translations = {
             contactUs: "Hubungi Kami",
             call: "Hubungi Kami",
             location: "Lokasi",
+            street: "Jalan. Suropati No.1, Dauhwaru, Kec. Negara, Kabupaten Jembrana, Bali 82218"
         },
         destination: {
             hero: {
@@ -250,8 +247,9 @@ const translations = {
             },
         },
         searchLocation: {
-            title: "Cari Tempat Wisata di Jembrana",
-            subTitle: "Tempat Wisata Terfavorit",
+            title: "Cari Tempat Wisata",
+            subTitle: "di Jembrana",
+            title2: "Tempat Wisata Terfavorit",
             description:
                 "Nikmati pesona tempat wisata terfavorit di Jembrana yang menyuguhkan keindahan alam dan budaya, mulai dari hamparan pantai eksotis, panorama pegunungan, hingga spot-spot instagramable yang tak terlupakan",
             empty: "Tidak ada hasil yang ditemukan. Coba cari dengan kata kunci yang berbeda.",
@@ -296,10 +294,7 @@ const translations = {
             searchLocation: "Search Location",
         },
         heroSection: {
-            title: "About",
-            subtitle: "Tourism Jembrana",
-            description:
-                "Welcome to Jembrana, a regency at the western tip of Bali Island that offers natural beauty and cultural richness. Through this video, let's take a closer look at the natural charm of Jembrana and the warmth of its people.",
+            title: "Jembrana Tourism Attraction Promotion Video",
         },
         cardHomePage: {
             moreDestination: "More Destination",
@@ -317,7 +312,6 @@ const translations = {
             subtitle: "Now!",
             description:
                 "Discover the natural beauty and rich culture of West Bali.",
-            brandTitle: "West Bali Paradise",
             brandSubtitle: "of Bali",
             quickLinks: "Quick Links",
             socialMedia: "Social Media",
@@ -331,9 +325,10 @@ const translations = {
             contanctUs: "Contact Us",
             call: "Call Us",
             location: "Location",
+            street: "Suropati Street No.1, Dauhwaru, Negara District, Jembrana Regency, Bali 82218"
         },
         aboutSection: {
-            title: "About Us",
+            title: "About",
             subtitle: "West Paradise of Bali",
             description:
                 "Learn about the mission and role of West Paradise of Bali in introducing the charm of Jembrana. We are here as a trusted travel guide to explore West Bali.",
@@ -345,37 +340,37 @@ const translations = {
             locationUs: "Our Location",
             features: [
                 {
-                    icon: "🌅",
+                    icon: "/assets/icon/ikon_destinasi_wisata.png",
                     title: "Tourist Destinations",
                     desc: "Information on stunning natural, cultural, and historical tourist attractions in Jembrana.",
                 },
                 {
-                    icon: "🏡",
+                    icon: "/assets/icon/ikon_desa_wisata.png",
                     title: "Tourist Villages",
                     desc: "Profiles of leading tourist villages with local wisdom and unique community characteristics.",
                 },
                 {
-                    icon: "🍽️",
+                    icon: "/assets/icon/ikon_restoran.png",
                     title: "Restaurants",
                     desc: "Recommendations for dining places and typical West Bali cuisine that can be enjoyed by tourists.",
                 },
                 {
-                    icon: "💡",
+                    icon: "/assets/icon/ikon_ekraf.png",
                     title: "Creative Economy",
                     desc: "Exploration of local handicrafts, arts, and creative businesses thriving in Jembrana.",
                 },
                 {
-                    icon: "🏨",
+                    icon: "/assets/icon/ikon_akomodasi.png",
                     title: "Accommodation",
                     desc: "Accommodation options ranging from hotels, villas, to homestays to suit various needs.",
                 },
                 {
-                    icon: "🚌",
+                    icon: "/assets/icon/ikon_transportasi.png",
                     title: "Transportation",
                     desc: "Guidance on local transportation modes to easily reach various tourist locations.",
                 },
                 {
-                    icon: "🏥",
+                    icon: "/assets/icon/ikon_faskes.png",
                     title: "Health Facilities",
                     desc: "Important information about clinics, hospitals, and health services available in Jembrana.",
                 },
@@ -509,8 +504,9 @@ const translations = {
             },
         },
         searchLocation: {
-            title: "Search Tourist Places in Jembrana",
-            subTitle: "Most Favorite Tourist Places",
+            title: "Search Tourist Places",
+            subTitle: "in Jembrana",
+            title2: "Most Favorite Tourist Places",
             description:
                 "Enjoy the charm of the most favorite tourist places in Jembrana that offer natural beauty and culture, from exotic beach stretches, mountain panoramas, to unforgettable Instagrammable spots.",
             empty: "No results found. Try searching with different keywords.",

@@ -30,7 +30,7 @@ export default function CardHomePage() {
             }}
         >
             {/* Destinasi Wisata */}
-            <div style={{ marginBottom: 48 }}>
+            <div style={{ marginBottom: 150 }}>
                 <div
                     style={{
                         display: "flex",
@@ -46,7 +46,7 @@ export default function CardHomePage() {
                         style={{
                             margin: 0,
                             fontSize: 45,
-                            fontWeight: 700,
+                            fontWeight: 500,
                             fontFamily: "Playfair Display, serif",
                             lineHeight: "1.1",
                         }}
@@ -112,7 +112,7 @@ export default function CardHomePage() {
             </div>
 
             {/* Restoran */}
-            <div style={{ marginBottom: 48 }}>
+            <div style={{ marginBottom: 150 }}>
                 <div
                     style={{
                         display: "flex",
@@ -128,7 +128,7 @@ export default function CardHomePage() {
                         style={{
                             margin: 0,
                             fontSize: 45,
-                            fontWeight: 700,
+                            fontWeight: 500,
                             fontFamily: "Playfair Display, serif",
                             lineHeight: "1.1",
                         }}
@@ -180,7 +180,7 @@ export default function CardHomePage() {
             </div>
 
             {/* Akomodasi */}
-            <div style={{ marginBottom: 48 }}>
+            <div style={{ marginBottom: 150 }}>
                 <div
                     style={{
                         display: "flex",
@@ -196,7 +196,7 @@ export default function CardHomePage() {
                         style={{
                             margin: 0,
                             fontSize: 45,
-                            fontWeight: 700,
+                            fontWeight: 500,
                             fontFamily: "Playfair Display, serif",
                             lineHeight: "1.1",
                         }}
@@ -254,7 +254,7 @@ export default function CardHomePage() {
             </div>
 
             {/* Kalender Event */}
-            <div>
+            <div style={{ marginBottom: 150 }}>
                 <div
                     style={{
                         display: "flex",
@@ -270,7 +270,7 @@ export default function CardHomePage() {
                         style={{
                             margin: 0,
                             fontSize: 45,
-                            fontWeight: 700,
+                            fontWeight: 500,
                             fontFamily: "Playfair Display, serif",
                             lineHeight: "1.1",
                         }}
@@ -315,7 +315,7 @@ export default function CardHomePage() {
                         style={{
                             margin: 0,
                             fontSize: 45,
-                            fontWeight: 700,
+                            fontWeight: 500,
                             fontFamily: "Playfair Display, serif",
                             lineHeight: "1.1",
                         }}

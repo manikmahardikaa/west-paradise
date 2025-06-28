@@ -10,6 +10,7 @@ import {
     Button,
     Image,
     Flex,
+    Grid,
 } from "antd";
 import {
     EnvironmentOutlined,
@@ -31,13 +32,17 @@ import CustomCard from "../../common/card";
 import translations from "../../../lang/lang";
 
 const { Title, Paragraph, Text } = Typography;
+const { useBreakpoint } = Grid;
 
 export default function DetailDestinationContent() {
     const { data, type, nearby, reviews, locale } = usePage().props;
     const t = translations[locale || "id"];
     const scrollRef = useRef(null);
 
-    const images = [data.thumbnail, ...data.images.map((img) => img.image_url)];
+    const screens = useBreakpoint();
+    const isMobile = !screens.md;
+
+    const images = [...data.images.map((img) => img.image_url)];
     const position = [parseFloat(data.latitude), parseFloat(data.longitude)];
 
     const scroll = (direction) => {
@@ -80,116 +85,111 @@ export default function DetailDestinationContent() {
             <div
                 style={{
                     background: `url('/assets/images/bg-detail.png') center/cover no-repeat`,
-                    padding: 48,
+                    padding: isMobile ? 24 : 48,
                     alignItems: "center",
                 }}
             >
-                <div>
-                    <Flex
-                        align="center"
-                        gap={10}
-                        style={{ marginBottom: 24, marginTop: 50 }}
-                    >
-                        <Button
-                            type="text"
-                            icon={
-                                <ArrowLeftOutlined style={{ fontSize: 18 }} />
-                            }
-                            onClick={() =>
-                                Inertia.visit(`/destination/?type=${type}`)
-                            }
-                            style={{ color: "white" }}
-                        />
-                        <span
-                            style={{
-                                color: "white",
-                                fontSize: 16,
-                                fontWeight: 600,
-                            }}
-                        >
-                            {t.label.detail} {parseType(type, locale)}
-                        </span>
-                    </Flex>
-                </div>
-                <Image.PreviewGroup>
-                    <div
+                <Flex
+                    align="center"
+                    gap={10}
+                    style={{ marginBottom: 24, marginTop: isMobile ? 24 : 50 }}
+                >
+                    <Button
+                        type="text"
+                        icon={<ArrowLeftOutlined style={{ fontSize: 18 }} />}
+                        onClick={() =>
+                            Inertia.visit(`/destination/?type=${type}`)
+                        }
+                        style={{ color: "white" }}
+                    />
+                    <span
                         style={{
-                            display: "flex",
-                            justifyContent: "center",
-                            alignItems: "center",
+                            color: "white",
+                            fontSize: 16,
+                            fontWeight: 600,
                         }}
                     >
+                        {t.label.detail} {parseType(type, locale)}
+                    </span>
+                </Flex>
+
+                <Image.PreviewGroup>
+                    <div style={{ display: "flex", justifyContent: "center" }}>
                         <Image
                             src={data.thumbnail}
                             alt={data.name}
                             style={{
-                                maxWidth: "100%",
-                                height: 460,
+                                width: "100%",
+                                maxWidth: isMobile ? "100%" : 960,
+                                height: isMobile ? "auto" : 460,
                                 borderRadius: 12,
                                 objectFit: "cover",
                             }}
                         />
                     </div>
 
-                    <div
-                        style={{
-                            position: "relative",
-                            marginTop: 16,
-                            padding: "0 48px",
-                        }}
-                    >
-                        <Button
-                            shape="circle"
-                            icon={<LeftOutlined />}
-                            onClick={() => scroll("left")}
-                            style={{
-                                position: "absolute",
-                                left: 0,
-                                top: "50%",
-                                transform: "translateY(-50%)",
-                                zIndex: 1,
-                            }}
-                        />
-
+                    {/* Carousel only visible when images.length > 0 */}
+                    {images.length > 0 && (
                         <div
-                            ref={scrollRef}
                             style={{
-                                display: "flex",
-                                gap: 12,
-                                overflowX: "auto",
-                                padding: "4px 0",
+                                position: "relative",
+                                marginTop: 16,
+                                padding: isMobile ? "0 16px" : "0 48px",
                             }}
                         >
-                            {images.map((src, index) => (
-                                <Image
-                                    key={index}
-                                    width={500}
-                                    height={300}
-                                    style={{
-                                        borderRadius: 10,
-                                        objectFit: "cover",
-                                        flexShrink: 0,
-                                        cursor: "pointer",
-                                    }}
-                                    src={src}
-                                    alt={`thumb-${index}`}
-                                />
-                            ))}
-                        </div>
+                            <Button
+                                shape="circle"
+                                icon={<LeftOutlined />}
+                                onClick={() => scroll("left")}
+                                style={{
+                                    position: "absolute",
+                                    left: 0,
+                                    top: "50%",
+                                    transform: "translateY(-50%)",
+                                    zIndex: 1,
+                                }}
+                            />
 
-                        <Button
-                            shape="circle"
-                            icon={<RightOutlined />}
-                            onClick={() => scroll("right")}
-                            style={{
-                                position: "absolute",
-                                right: 0,
-                                top: "50%",
-                                transform: "translateY(-50%)",
-                                zIndex: 1,
-                            }}
-                        />
-                    </div>
+                            <div
+                                ref={scrollRef}
+                                style={{
+                                    display: "flex",
+                                    gap: 12,
+                                    overflowX: "auto",
+                                    padding: "4px 0",
+                                }}
+                            >
+                                {images.map((src, index) => (
+                                    <Image
+                                        key={index}
+                                        width={isMobile ? 220 : 500}
+                                        height={isMobile ? 140 : 300}
+                                        style={{
+                                            borderRadius: 10,
+                                            objectFit: "cover",
+                                            flexShrink: 0,
+                                            cursor: "pointer",
+                                        }}
+                                        src={src}
+                                        alt={`thumb-${index}`}
+                                    />
+                                ))}
+                            </div>
+
+                            <Button
+                                shape="circle"
+                                icon={<RightOutlined />}
+                                onClick={() => scroll("right")}
+                                style={{
+                                    position: "absolute",
+                                    right: 0,
+                                    top: "50%",
+                                    transform: "translateY(-50%)",
+                                    zIndex: 1,
+                                }}
+                            />
+                        </div>
+                    )}
                 </Image.PreviewGroup>
             </div>
 

@@ -45,6 +45,7 @@ export default function DestinationSelect({
                     width: 270,
                     fontFamily: "Poppins, Inter, sans-serif",
                     boxShadow: "0 2px 8px rgba(0,0,0,0.07)",
+                    marginBottom: 24,
                 }}
                 bodyStyle={{ padding: 0 }}
             >

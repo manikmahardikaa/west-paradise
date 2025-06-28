@@ -1,5 +1,5 @@
 import Title from "antd/es/typography/Title";
-import { Button, Card, Col, Flex, Pagination, Row, Alert } from "antd";
+import { Button, Card, Col, Flex, Pagination, Row, Alert, Grid } from "antd";
 import SearchBar from "../../common/search";
 import { usePage } from "@inertiajs/inertia-react";
 import CardEvent from "../../common/card-event";
@@ -16,7 +16,6 @@ dayjs.extend(isSameOrAfter);
 
 export default function EventContent() {
     const { events = [], locale } = usePage().props;
-
     const t = translations[locale || "id"];
 
     const [searchTerm, setSearchTerm] = useState("");
@@ -24,6 +23,7 @@ export default function EventContent() {
     const [activeFilter, setActiveFilter] = useState("");
     const [filteredEvents, setFilteredEvents] = useState([]);
     const pageSize = 4;
+    const { md } = Grid.useBreakpoint();
 
     useEffect(() => {
         handleFilterBy(activeFilter);
@@ -80,23 +80,21 @@ export default function EventContent() {
 
     return (
         <>
-            {/* Hero Section */}
             <Hero
                 image="/assets/images/hero-event.png"
                 title={t.event.hero.title}
                 description={t.event.hero.description}
             />
 
-            {/* Main Section */}
-            <div style={{ margin: "12px 32px" }}>
-                <div style={{ padding: 24 }}>
+            <div style={{ margin: md ? "12px 32px" : "12px 16px" }}>
+                <div style={{ padding: md ? 24 : 16 }}>
                     <Flex
                         justify="space-between"
                         align="center"
                         wrap="wrap"
                         style={{ gap: 16 }}
                     >
-                        <Flex align="center" gap={16}>
+                        <Flex align="center" gap={16} wrap="wrap">
                             <Title
                                 level={4}
                                 style={{ margin: 0, fontWeight: 700 }}
@@ -122,13 +120,25 @@ export default function EventContent() {
                                 {t.event.select}
                             </Title>
                         </Flex>
-                        <SearchBar onSearch={handleSearch} value={searchTerm} />
+                        <div
+                            style={{ flexGrow: 1, maxWidth: md ? 300 : "100%" }}
+                        >
+                            <SearchBar
+                                onSearch={handleSearch}
+                                value={searchTerm}
+                            />
+                        </div>
                     </Flex>
                 </div>
 
-                {/* Content Section */}
-                <div style={{ display: "flex", gap: 24, padding: "24px" }}>
-                    {/* Sidebar */}
+                <div
+                    style={{
+                        display: "flex",
+                        flexDirection: md ? "row" : "column",
+                        gap: 24,
+                        padding: md ? 24 : 16,
+                    }}
+                >
                     <div
                         style={{
                             display: "flex",
@@ -139,8 +149,7 @@ export default function EventContent() {
                         <EventSelect events={events} locale={locale} />
                     </div>
 
-                    {/* Event Cards */}
-                    <div style={{ flex: 1, marginLeft: 24 }}>
+                    <div style={{ flex: 1 }}>
                         <Card style={{ borderRadius: 12 }}>
                             <Flex
                                 gap={12}
@@ -205,7 +214,7 @@ export default function EventContent() {
                                     showIcon
                                 />
                             ) : (
-                                <Row gutter={[24, 24]}>
+                                <Row gutter={[16, 16]}>
                                     {paginatedEvents.map((item) => (
                                         <Col
                                             key={item.id}
@@ -234,7 +243,6 @@ export default function EventContent() {
                             )}
                         </Card>
 
-                        {/* Pagination */}
                         <div style={{ textAlign: "center", marginTop: 32 }}>
                             <Pagination
                                 current={currentPage}

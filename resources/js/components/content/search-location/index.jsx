@@ -2,19 +2,21 @@ import { useState } from "react";
 import { usePage } from "@inertiajs/inertia-react";
 import Title from "antd/es/typography/Title";
 import Paragraph from "antd/es/typography/Paragraph";
-import { Col, Divider, Empty, Row } from "antd";
+import { Col, Divider, Empty, Row, Grid } from "antd";
 import CustomCard from "../../common/card";
 import SearchBar from "../../common/search";
 import translations from "../../../lang/lang";
 
+const { useBreakpoint } = Grid;
+
 export default function SearchLocationContent() {
     const { data, locale } = usePage().props;
-
     const [searchTerm, setSearchTerm] = useState("");
     const [searchResults, setSearchResults] = useState([]);
     const [isSearching, setIsSearching] = useState(false);
 
     const t = translations[locale || "id"];
+    const screens = useBreakpoint();
 
     const getAverageRating = (reviews = []) => {
         if (reviews.length === 0) return 0;
@@ -49,27 +51,40 @@ export default function SearchLocationContent() {
     };
 
     return (
-        <div style={{ margin: "120px 24px" }}>
+        <div style={{ margin: screens.xs ? "80px 16px" : "120px 24px" }}>
             <div style={{ textAlign: "center", marginBottom: 64 }}>
-                <Title level={1} style={{ fontWeight: 700 }}>
+                <Title
+                    level={1}
+                    style={{
+                        fontWeight: 700,
+                        fontFamily: "Playfair Display",
+                        fontSize: screens.xs ? 32 : 50,
+                    }}
+                >
                     {t.searchLocation.title}
+                    <br />
+                    {t.searchLocation.subTitle}
                 </Title>
                 <div style={{ marginTop: 20 }}>
                     <SearchBar
-                        width={500}
+                        width={screens.xs ? "100%" : 500}
                         onSearch={handleSearch}
                         value={searchTerm}
                     />
                 </div>
             </div>
 
-            <div style={{ padding: "0 64px" }}>
+            <div style={{ padding: screens.xs ? "0 16px" : "0 64px" }}>
                 <Divider />
                 <Title
-                    level={2}
-                    style={{ textAlign: "center", fontWeight: 700 }}
+                    level={1}
+                    style={{
+                        textAlign: "center",
+                        fontWeight: 700,
+                        fontFamily: "Playfair Display",
+                    }}
                 >
-                    {t.searchLocation.subTitle}
+                    {t.searchLocation.title2}
                 </Title>
                 <Paragraph
                     style={{

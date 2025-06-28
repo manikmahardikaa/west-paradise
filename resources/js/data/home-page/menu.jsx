@@ -21,7 +21,13 @@ export const HomePageMenu = ({ lang, locale }) => {
                     {t.type.destinasi}
                 </Link>
             ),
-            icon: <ProductFilled />,
+            icon: (
+                <img
+                    src="/assets/icon/ikon_destinasi_wisata.png"
+                    alt="Destinasi Wisata"
+                    style={{ width: 50, height: 50 }}
+                />
+            ),
         },
         {
             key: "villages",
@@ -30,7 +36,13 @@ export const HomePageMenu = ({ lang, locale }) => {
                     {t.type["desa-wisata"]}
                 </Link>
             ),
-            icon: <HomeFilled />,
+            icon: (
+                <img
+                    src="/assets/icon/ikon_desa_wisata.png"
+                    alt="Desa Wisata"
+                    style={{ width: 50, height: 50 }}
+                />
+            ),
         },
         {
             key: "restaurants",
@@ -39,7 +51,13 @@ export const HomePageMenu = ({ lang, locale }) => {
                     {t.type.restoran}
                 </Link>
             ),
-            icon: <ShopFilled />,
+            icon: (
+                <img
+                    src="/assets/icon/ikon_restoran.png"
+                    alt="Restoran"
+                    style={{ width: 50, height: 50 }}
+                />
+            ),
         },
         {
             key: "creative-economy",
@@ -48,7 +66,13 @@ export const HomePageMenu = ({ lang, locale }) => {
                     {t.type["ekonomi-kreatif"]}
                 </Link>
             ),
-            icon: <BulbFilled />,
+            icon: (
+                <img
+                    src="/assets/icon/ikon_ekraf.png"
+                    alt="Ekonomi Kreatif"
+                    style={{ width: 50, height: 50 }}
+                />
+            ),
         },
         {
             key: "accommodations",
@@ -57,7 +81,13 @@ export const HomePageMenu = ({ lang, locale }) => {
                     {t.type.akomodasi}
                 </Link>
             ),
-            icon: <HomeFilled />,
+            icon: (
+                <img
+                    src="/assets/icon/ikon_akomodasi.png"
+                    alt="Akomodasi"
+                    style={{ width: 50, height: 50 }}
+                />
+            ),
         },
         {
             key: "transportations",
@@ -66,7 +96,13 @@ export const HomePageMenu = ({ lang, locale }) => {
                     {t.type.transportasi}
                 </Link>
             ),
-            icon: <CarFilled />,
+            icon: (
+                <img
+                    src="/assets/icon/ikon_transportasi.png"
+                    alt="Transportasi"
+                    style={{ width: 50, height: 50 }}
+                />
+            ),
         },
         {
             key: "health-facilities",
@@ -77,7 +113,13 @@ export const HomePageMenu = ({ lang, locale }) => {
                     {t.type["fasilitas-kesehatan"]}
                 </Link>
             ),
-            icon: <MedicineBoxFilled />,
+            icon: (
+                <img
+                    src="/assets/icon/ikon_faskes.png"
+                    alt="Fasilitas Kesehatan"
+                    style={{ width: 50, height: 50 }}
+                />
+            ),
         },
     ];
 };

@@ -1,4 +1,4 @@
-export default function BackgroundHomePage({ children}) {
+export default function BackgroundHomePage({ children }) {
     return (
         <div
             style={{
@@ -7,12 +7,13 @@ export default function BackgroundHomePage({ children}) {
                 backgroundPosition: "center",
                 backgroundRepeat: "no-repeat",
                 width: "100%",
-                height: "100vh",
+                minHeight: "100vh",
                 display: "flex",
                 flexDirection: "column",
                 alignItems: "center",
-                paddingTop: 100,
-                paddingBottom: 80,
+                justifyContent: "center",
+                padding: "100px 16px 80px", // top padding 100, horizontal 16px for mobile safety, bottom 80
+                boxSizing: "border-box",
             }}
         >
             {children}

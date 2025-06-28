@@ -1,14 +1,15 @@
-import { Card, Typography, Tag } from "antd";
+import { Card, Typography, Tag, Grid } from "antd";
 import { EnvironmentOutlined, CalendarOutlined } from "@ant-design/icons";
 import parse from "html-react-parser";
 import dayjs from "dayjs";
 import "dayjs/locale/id";
-
-dayjs.locale("id");
 import { Inertia } from "@inertiajs/inertia";
 import translations from "../../../lang/lang";
 
 const { Title, Paragraph, Text } = Typography;
+const { useBreakpoint } = Grid;
+
+dayjs.locale("id");
 
 export default function CardEvent({
     name,
@@ -22,6 +23,7 @@ export default function CardEvent({
     is_uncertain,
     locale,
 }) {
+    const screens = useBreakpoint();
     const parsedDesc = parse(description);
     const formattedDate =
         start_date === end_date
@@ -31,13 +33,15 @@ export default function CardEvent({
               )}`;
 
     const t = translations[locale || "id"];
+
     return (
         <Card
             style={{
                 borderRadius: 24,
                 padding: 12,
-                width: "100vh",
+                width: "100%",
                 boxShadow: "0 6px 16px rgba(0, 0, 0, 0.06)",
+                cursor: "pointer",
             }}
             bodyStyle={{ padding: 12 }}
             onClick={() => {
@@ -50,14 +54,15 @@ export default function CardEvent({
                 style={{
                     display: "flex",
                     gap: 18,
-                    flexWrap: "wrap",
+                    flexDirection: screens.xs ? "column" : "row",
+                    alignItems: screens.xs ? "center" : "flex-start",
                 }}
             >
                 {/* Thumbnail */}
                 <div
                     style={{
                         position: "relative",
-                        minWidth: 180,
+                        width: screens.xs ? "100%" : 180,
                         height: 140,
                         overflow: "hidden",
                         borderRadius: 16,
@@ -68,7 +73,7 @@ export default function CardEvent({
                         alt={name}
                         style={{
                             width: "100%",
-                            height: "100%",
+                            height: "100%,",
                             objectFit: "cover",
                             borderRadius: 16,
                         }}
@@ -92,7 +97,7 @@ export default function CardEvent({
                 </div>
 
                 {/* Content */}
-                <div style={{ flex: 1 }}>
+                <div style={{ flex: 1, width: "100%" }}>
                     <Title level={5} style={{ marginBottom: 4 }}>
                         {name}
                     </Title>
@@ -108,7 +113,14 @@ export default function CardEvent({
                         {parsedDesc}
                     </Paragraph>
 
-                    <div style={{ display: "flex", gap: 24, flexWrap: "wrap" }}>
+                    <div
+                        style={{
+                            display: "flex",
+                            gap: 24,
+                            flexWrap: "wrap",
+                            flexDirection: screens.xs ? "column" : "row",
+                        }}
+                    >
                         <div
                             style={{
                                 display: "flex",

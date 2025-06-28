@@ -1,6 +1,6 @@
 import { usePage } from "@inertiajs/inertia-react";
 import BackgroundHomePage from "../background-home-page";
-import { Button, Col, Divider, Flex, Image, Row, Typography } from "antd";
+import { Button, Col, Divider, Flex, Image, Row, Typography, Grid } from "antd";
 
 import {
     ArrowLeftOutlined,
@@ -19,11 +19,14 @@ import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet";
 import translations from "../../../lang/lang";
 
 const { Title, Paragraph, Text } = Typography;
+const { useBreakpoint } = Grid;
 
 export default function DetailEventContent() {
     const { data, type, reviews, locale } = usePage().props;
 
     const t = translations[locale || "id"];
+
+    const screens = useBreakpoint()
 
     const position = [parseFloat(data.latitude), parseFloat(data.longitude)];
 
@@ -77,10 +80,11 @@ export default function DetailEventContent() {
                             src={data.thumbnail}
                             alt={data.name}
                             style={{
-                                maxWidth: "100%",
-                                height: 460,
+                                width: "100%",
+                                height: screens.xs ? "auto" : 460,
                                 borderRadius: 12,
                                 objectFit: "cover",
+                                maxHeight: screens.xs ? "none" : 460,
                             }}
                         />
                     </div>

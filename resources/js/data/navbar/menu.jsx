@@ -9,9 +9,9 @@ export const NavbarMenu = (locale = "id") => {
 
     return [
         {
-            key: "/home-page",
+            key: "/",
             label: (
-                <Link href={`/home-page?lang=${currentLang}`}>
+                <Link href={`/?lang=${currentLang}`}>
                     {t.navbar?.homePage || "Beranda"}
                 </Link>
             ),

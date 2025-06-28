@@ -118,15 +118,15 @@ export default function DestinationContent() {
         <div>
             <Hero image={image} title={title} description={description} />
 
-            <div>
-                <div style={{ padding: 24 }}>
+            <div style={{ padding: "0px 50px", marginTop: 30 }}>
+                <div>
                     <Flex
                         justify="space-between"
                         align="center"
                         wrap="wrap"
                         style={{ gap: 16 }}
                     >
-                        <Flex align="center" gap={16}>
+                        <Flex align="center" gap={16} wrap="wrap">
                             <Title
                                 level={4}
                                 style={{ margin: 0, fontWeight: 700 }}
@@ -152,26 +152,19 @@ export default function DestinationContent() {
                                 {t.destination.select} {title}
                             </Title>
                         </Flex>
-                        <SearchBar onSearch={handleSearch} value={searchTerm} />
+                        <div style={{ width: "100%", maxWidth: 320 }}>
+                            <SearchBar
+                                onSearch={handleSearch}
+                                value={searchTerm}
+                            />
+                        </div>
                     </Flex>
                 </div>
 
                 {/* Content */}
-                <div
-                    style={{
-                        display: "flex",
-                        gap: 24,
-                        padding: "24px",
-                    }}
-                >
+                <Row gutter={[24, 24]} style={{ padding: 24 }}>
                     {/* Sidebar */}
-                    <div
-                        style={{
-                            display: "flex",
-                            flexDirection: "column",
-                            gap: 24,
-                        }}
-                    >
+                    <Col xs={24} lg={6}>
                         <DestinationSelect
                             category={categories}
                             district={districts}
@@ -179,22 +172,22 @@ export default function DestinationContent() {
                             onFilterChange={handleFilterChange}
                             locale={locale}
                         />
-                    </div>
+                    </Col>
 
                     {/* Cards */}
-                    <div style={{ flex: 1, marginLeft: 24 }}>
+                    <Col xs={24} lg={18}>
                         <Card
                             style={{
                                 boxShadow: "0 4px 8px rgba(0, 0, 0, 0.1)",
                                 borderRadius: "8px",
                             }}
+                            bodyStyle={{ padding: 24 }}
                         >
                             {filteredData.length > 0 ? (
-                                <Row gutter={60}>
+                                <Row gutter={[24, 24]} justify="start">
                                     {filteredData.map((item) => {
                                         const viewsCount =
                                             item.views?.length || 0;
-
                                         const averageRating =
                                             item.reviews &&
                                             item.reviews.length > 0
@@ -212,6 +205,7 @@ export default function DestinationContent() {
                                                 sm={12}
                                                 md={8}
                                                 lg={6}
+                                               
                                             >
                                                 <CustomCard
                                                     id={item.id}
@@ -244,11 +238,9 @@ export default function DestinationContent() {
                                 pageSize={8}
                             />
                         </div>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
             </div>
-
-            {/* Filter Bar */}
         </div>
     );
 }

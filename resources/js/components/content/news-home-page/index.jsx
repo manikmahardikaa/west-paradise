@@ -10,6 +10,7 @@ import {
     Button,
     Empty,
     notification,
+    Grid,
 } from "antd";
 import CustomCard from "../../common/card";
 import SearchBar from "../../common/search";
@@ -20,15 +21,17 @@ import translations from "../../../lang/lang";
 
 export default function NewsContent() {
     const { news = [], locale } = usePage().props;
-
+    const screens = Grid.useBreakpoint();
     const t = translations[locale || "id"];
 
     const [searchTerm, setSearchTerm] = useState("");
     const [filteredNews, setFilteredNews] = useState(news);
     const [activeFilter, setActiveFilter] = useState("terbaru");
+    const [currentPage, setCurrentPage] = useState(1);
+    const pageSize = 8;
 
     const handleFilterBy = (type) => {
-        let sorted = [...filteredNews];
+        let sorted = [...news];
 
         if (type === "terbaru") {
             sorted.sort((a, b) =>
@@ -46,6 +49,7 @@ export default function NewsContent() {
 
         setActiveFilter(type);
         setFilteredNews(sorted);
+        setCurrentPage(1);
     };
 
     const handleSearch = (value) => {
@@ -55,6 +59,7 @@ export default function NewsContent() {
 
         setSearchTerm(value);
         setFilteredNews(filtered);
+        setCurrentPage(1);
 
         if (value && filtered.length === 0) {
             notification.warning({
@@ -69,26 +74,33 @@ export default function NewsContent() {
         setFilteredNews(news);
     }, [news]);
 
+    const paginatedNews = filteredNews.slice(
+        (currentPage - 1) * pageSize,
+        currentPage * pageSize
+    );
+
     return (
         <>
-            {/* Hero Section */}
-
             <Hero
                 image="/assets/images/hero-news.png"
                 title={t.news.title}
                 description={t.news.description}
             />
 
-            <div style={{ margin: "0 40px" }}>
-                {/* Search + Filter */}
-                <div style={{ padding: "32px 32px 0", background: "#fff" }}>
+            <div style={{ margin: screens.xs ? "0 16px" : "0 40px" }}>
+                <div
+                    style={{
+                        padding: screens.xs ? 16 : "32px 32px 0",
+                        background: "#fff",
+                    }}
+                >
                     <Flex
                         justify="space-between"
                         align="center"
                         wrap="wrap"
                         style={{ gap: 16 }}
                     >
-                        <Flex align="center" gap={16}>
+                        <Flex align="center" gap={16} wrap>
                             <Title
                                 level={4}
                                 style={{
@@ -122,63 +134,57 @@ export default function NewsContent() {
                     </Flex>
                 </div>
 
-                {/* News Cards */}
-                <div style={{ padding: 32 }}>
+                <div style={{ padding: screens.xs ? 16 : 32 }}>
                     {filteredNews.length === 0 ? (
                         <Empty description={t.news.notification.notFound} />
                     ) : (
                         <>
                             <Card style={{ borderRadius: 8 }}>
-                                <Flex gap={15} style={{ marginBottom: 24 }}>
-                                    {[
-                                        {
-                                            label: t.news.filter.terbaru,
-                                            value: "terbaru",
-                                        },
-                                        {
-                                            label: t.news.filter.terlama,
-                                            value: "terlama",
-                                        },
-                                        {
-                                            label: t.news.filter.populer,
-                                            value: "terpopuler",
-                                        },
-                                    ].map((btn) => (
-                                        <Button
-                                            key={btn.value}
-                                            type={
-                                                activeFilter === btn.value
-                                                    ? "primary"
-                                                    : "default"
-                                            }
-                                            onClick={() =>
-                                                handleFilterBy(btn.value)
-                                            }
-                                            shape="round"
-                                            style={{
-                                                backgroundColor:
-                                                    activeFilter === btn.value
-                                                        ? "#E81E4B"
-                                                        : "transparent",
-                                                color:
-                                                    activeFilter === btn.value
-                                                        ? "#fff"
-                                                        : "#E81E4B",
-                                                borderColor: "#E81E4B",
-                                                fontWeight: 500,
-                                                boxShadow:
-                                                    activeFilter === btn.value
-                                                        ? "0 4px 12px rgba(232, 30, 75, 0.4)"
-                                                        : "none",
-                                            }}
-                                        >
-                                            {btn.label}
-                                        </Button>
-                                    ))}
+                                <Flex
+                                    gap={15}
+                                    style={{
+                                        marginBottom: 24,
+                                        flexWrap: "wrap",
+                                    }}
+                                >
+                                    {["terbaru", "terlama", "populer"].map(
+                                        (value) => (
+                                            <Button
+                                                key={value}
+                                                type={
+                                                    activeFilter === value
+                                                        ? "primary"
+                                                        : "default"
+                                                }
+                                                onClick={() =>
+                                                    handleFilterBy(value)
+                                                }
+                                                shape="round"
+                                                style={{
+                                                    backgroundColor:
+                                                        activeFilter === value
+                                                            ? "#E81E4B"
+                                                            : "transparent",
+                                                    color:
+                                                        activeFilter === value
+                                                            ? "#fff"
+                                                            : "#E81E4B",
+                                                    borderColor: "#E81E4B",
+                                                    fontWeight: 500,
+                                                    boxShadow:
+                                                        activeFilter === value
+                                                            ? "0 4px 12px rgba(232, 30, 75, 0.4)"
+                                                            : "none",
+                                                }}
+                                            >
+                                                {t.news.filter[value]}
+                                            </Button>
+                                        )
+                                    )}
                                 </Flex>
 
                                 <Row gutter={[24, 24]}>
-                                    {filteredNews.map((item) => (
+                                    {paginatedNews.map((item) => (
                                         <Col
                                             key={item.id}
                                             xs={24}
@@ -206,9 +212,12 @@ export default function NewsContent() {
                                     }}
                                 >
                                     <Pagination
-                                        defaultCurrent={1}
+                                        current={currentPage}
                                         total={filteredNews.length}
-                                        pageSize={8}
+                                        pageSize={pageSize}
+                                        onChange={(page) =>
+                                            setCurrentPage(page)
+                                        }
                                     />
                                 </div>
                             </Card>

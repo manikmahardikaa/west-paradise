@@ -5,7 +5,7 @@ export default function FormReviewSelect({ onFilter, review }) {
     const [form] = Form.useForm();
     const sector = Array.from(new Set(review.map((item) => item.review_type)));
 
-    const handleSubmit = () => {
+    const handleChange = () => {
         const values = form.getFieldsValue();
         onFilter({
             sector: values.sector,
@@ -13,14 +13,14 @@ export default function FormReviewSelect({ onFilter, review }) {
     };
 
     return (
-        <Form form={form} onFinish={handleSubmit} layout="vertical">
+        <Form form={form} onFinish={handleChange} layout="vertical">
             <Row gutter={[16, 16]}>
                 <Col span={8}>
                     <Form.Item name="sector">
                         <Select
                             placeholder="Pilih Sektor"
                             allowClear
-                            onChange={handleSubmit}
+                            onChange={handleChange}
                         >
                             {sector.map((sector) => (
                                 <Select.Option key={sector} value={sector}>
@@ -30,7 +30,7 @@ export default function FormReviewSelect({ onFilter, review }) {
                         </Select>
                     </Form.Item>
                 </Col>
-                <Col span={8}>
+                {/* <Col span={8}>
                     <Button
                         type="primary"
                         htmlType="submit"
@@ -38,7 +38,7 @@ export default function FormReviewSelect({ onFilter, review }) {
                     >
                         Filter
                     </Button>
-                </Col>
+                </Col> */}
             </Row>
         </Form>
     );

@@ -24,11 +24,11 @@ export default function HomePageContent() {
                     </div>
                 </div>
             </BackgroundHomePage>
-            <div style={{ marginTop: 32 }}>
+            <div style={{ marginTop: 50 }}>
                 <HeroSection locale={locale} />
             </div>
-            <div style={{ marginTop: 32 }}>
-                <CardHomePage/>
+            <div style={{ marginTop: 50 }}>
+                <CardHomePage />
             </div>
         </HomeLayout>
     );

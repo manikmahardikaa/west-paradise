@@ -21,7 +21,7 @@ export default function CustomCard({
     const parseCreatedAt = (createdAt) => {
         return dayjs(createdAt).locale(locale).format("D MMMM YYYY");
     };
-    
+
     const t = translations[locale || "id"];
 
     const link =
@@ -33,8 +33,6 @@ export default function CustomCard({
         <Card
             hoverable
             style={{
-                minWidth: 300,
-                maxWidth: 340,
                 width: "100%",
                 borderRadius: 40,
                 boxShadow: "0 12px 32px rgba(50,50,50,0.11)",

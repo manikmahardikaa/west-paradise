@@ -1,13 +1,16 @@
 import { usePage } from "@inertiajs/inertia-react";
-import { Typography, Image, Space, Button } from "antd";
+import { Typography, Image, Space, Button, Grid } from "antd";
 import { EyeOutlined, CalendarOutlined } from "@ant-design/icons";
 import dayjs from "dayjs";
 import BackgroundHomePage from "../background-home-page";
 
+const { useBreakpoint } = Grid;
 const { Title } = Typography;
 
 export default function DetailNewsContent() {
     const { data, locale } = usePage().props;
+
+    const screens = useBreakpoint();
 
     return (
         <div style={{ fontFamily: "Poppins, sans-serif" }}>
@@ -17,11 +20,11 @@ export default function DetailNewsContent() {
                     src={data.thumbnail}
                     alt={data.name}
                     style={{
-                        width: "100vh",
-                        height: "100vh",
+                        width: "100%",
+                        height: screens.xs ? "auto" : 460,
                         borderRadius: 12,
                         objectFit: "cover",
-                        maxHeight: 460,
+                        maxHeight: screens.xs ? "none" : 460,
                     }}
                 />
             </BackgroundHomePage>

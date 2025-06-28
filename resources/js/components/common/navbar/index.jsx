@@ -7,7 +7,7 @@ import { NavbarMenu } from "../../../data/navbar/menu";
 
 export default function NavBar() {
     const { url, locale } = usePage().props;
-    const [selectedKey, setSelectedKey] = useState("/home-page");
+    const [selectedKey, setSelectedKey] = useState("/");
     const screens = Grid.useBreakpoint();
     const [mobileOpen, setMobileOpen] = useState(false);
 
@@ -15,18 +15,28 @@ export default function NavBar() {
         if (url) {
             const cleanPath = url.split("?")[0];
 
-            const matchedItem = NavbarMenu().find((item) =>
-                cleanPath.startsWith("/detail-destination") &&
-                item.key === "/destination"
-                    ? true
-                    : cleanPath.startsWith("/detail-news") &&
-                      item.key === "/news"
-                    ? true
-                    : cleanPath.startsWith("/detail-event") &&
-                      item.key === "/event"
-                    ? true
-                    : cleanPath.startsWith(item.key)
-            );
+            const matchedItem = NavbarMenu().find((item) => {
+                if (
+                    cleanPath.startsWith("/detail-destination") &&
+                    item.key === "/destination"
+                )
+                    return true;
+
+                if (
+                    cleanPath.startsWith("/detail-news") &&
+                    item.key === "/news"
+                )
+                    return true;
+
+                if (
+                    cleanPath.startsWith("/detail-event") &&
+                    item.key === "/event"
+                )
+                    return true;
+
+                // exact match or special case for root path
+                return item.key === cleanPath;
+            });
 
             if (matchedItem) {
                 setSelectedKey(matchedItem.key);
@@ -196,7 +206,22 @@ export default function NavBar() {
                     mode="vertical"
                     selectedKeys={[selectedKey]}
                     onClick={() => setMobileOpen(false)}
-                    items={NavbarMenu()}
+                    style={{
+                        color: "#333", // warna teks default untuk semua item (tidak terpilih)
+                        fontWeight: 500,
+                    }}
+                    items={NavbarMenu(locale).map((item) => ({
+                        ...item,
+                        style:
+                            selectedKey === item.key
+                                ? {
+                                      color: "#f51b4c", // teks saat aktif
+                                      fontWeight: "bold",
+                                  }
+                                : {
+                                      color: "#333", // teks saat tidak aktif
+                                  },
+                    }))}
                 />
             </Drawer>
         </>
