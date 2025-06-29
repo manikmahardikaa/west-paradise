@@ -201,10 +201,6 @@ export default function DestinationContent() {
                                         return (
                                             <Col
                                                 key={item.id}
-                                                xs={24}
-                                                sm={12}
-                                                md={8}
-                                                lg={6}
                                                
                                             >
                                                 <CustomCard
@@ -217,6 +213,7 @@ export default function DestinationContent() {
                                                     }
                                                     district={item.district}
                                                     model={type}
+                                                    width={300}
                                                     type="destination"
                                                     views={viewsCount}
                                                     rating={averageRating}

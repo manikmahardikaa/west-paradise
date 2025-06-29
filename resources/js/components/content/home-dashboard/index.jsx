@@ -33,7 +33,7 @@ export default function HomeDashboardContent() {
 
     const typeLabels = {
         destinasi: "Destinasi Wisata",
-        desa: "Desa Wisata",
+        "desa-wisata": "Desa Wisata",
         restoran: "Restoran",
         "ekonomi-kreatif": "Ekonomi Kreatif",
         akomodasi: "Akomodasi",

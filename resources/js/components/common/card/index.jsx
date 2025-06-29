@@ -17,6 +17,7 @@ export default function CustomCard({
     rating,
     createdAt,
     locale,
+    width
 }) {
     const parseCreatedAt = (createdAt) => {
         return dayjs(createdAt).locale(locale).format("D MMMM YYYY");
@@ -33,7 +34,7 @@ export default function CustomCard({
         <Card
             hoverable
             style={{
-                width: "100%",
+                width: width,
                 borderRadius: 40,
                 boxShadow: "0 12px 32px rgba(50,50,50,0.11)",
                 overflow: "hidden",

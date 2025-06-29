@@ -5,7 +5,6 @@ const { Title } = Typography;
 
 export default function EventSelect({ events = [], locale }) {
     const categories = [...new Set(events.map((e) => e.category.name_category))];
-    const districts = [...new Set(events.map((e) => e.address))];
 
     console.log(events);
 
@@ -34,10 +33,10 @@ export default function EventSelect({ events = [], locale }) {
                 ))}
             </Checkbox.Group>
 
-            <Divider style={{ margin: "24px 0" }} />
+            {/* <Divider style={{ margin: "24px 0" }} /> */}
 
             {/* Kecamatan */}
-            <Title level={5} style={{ marginBottom: 16 }}>
+            {/* <Title level={5} style={{ marginBottom: 16 }}>
                 {t.destination.district}
             </Title>
             <Checkbox.Group
@@ -48,7 +47,7 @@ export default function EventSelect({ events = [], locale }) {
                         {dist}
                     </Checkbox>
                 ))}
-            </Checkbox.Group>
+            </Checkbox.Group> */}
         </Card>
     );
 }

@@ -55,7 +55,7 @@ class DashboardController extends Controller
 
         $allTypes = [
             'destinasi',
-            'desa',
+            'desa-wisata',
             'restoran',
             'ekonomi-kreatif',
             'akomodasi',

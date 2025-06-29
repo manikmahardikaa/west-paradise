@@ -137,7 +137,7 @@ export default function FormSlider({
                                     .getPublicUrl(path);
                                 const imageUrl = data.publicUrl;
                                 form.setFieldsValue({
-                                    thumbnail: imageUrl,
+                                    image_url: imageUrl,
                                 });
                                 setThumbnailPreview(imageUrl);
                             }}
